@@ -190,12 +190,12 @@ export async function run(): Promise<void> {
         cmd.push('--update-env-vars', kvToString(compiledEnvVars));
       }
       if (secrets && Object.keys(secrets).length > 0) {
-        cmd.push('--update-secrets', kvToString(secrets));
+        cmd.push('--set-secrets', kvToString(secrets));
       }
 
       // Compile the labels
       const compiledLabels = Object.assign({}, defaultLabels(), labels);
-      cmd.push('--update-labels', kvToString(compiledLabels));
+      cmd.push('--labels', kvToString(compiledLabels));
     } else {
       cmd = ['run', 'deploy', service, '--quiet'];
 
